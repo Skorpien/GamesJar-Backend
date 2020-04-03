@@ -1,5 +1,6 @@
 package com.backend.gamesjar.domain;
 
+
 public enum Category {
     WORKERPLACEMENT,
     TABLEAUBULDING,
@@ -8,5 +9,5 @@ public enum Category {
     DECKBUILDING,
     EURO,
     ADVENTURE,
-    AREACONTROL;
+    AREACONTROL
 }
