@@ -11,7 +11,8 @@ import java.util.Set;
 @AllArgsConstructor
 @Data
 public class GameDto {
+    private Long id;
     private String name;
     private PlayingTime time;
-    private Set<Category> categories;
+    private Category categories;
 }

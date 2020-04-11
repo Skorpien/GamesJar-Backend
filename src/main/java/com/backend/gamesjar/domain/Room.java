@@ -10,8 +10,7 @@ import java.util.List;
 
 @NoArgsConstructor
 @Data
-@Entity
-@Table(name = "rooms")
+@Entity(name = "rooms")
 public class Room {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,7 +31,8 @@ public class Room {
     )
     private List<Game> games = new ArrayList<>();
 
-    public Room(String name) {
+    public Room(Long id, String name) {
+        this.id = id;
         this.name = name;
     }
 }

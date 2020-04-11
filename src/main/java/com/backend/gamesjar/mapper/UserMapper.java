@@ -11,19 +11,21 @@ import java.util.stream.Collectors;
 public class UserMapper {
     public User mapToUser(final UserDto userDto) {
         return new User(
+                userDto.getId(),
                 userDto.getName(),
                 userDto.getPassword());
     }
 
     public UserDto mapToUserDto(final User user) {
         return new UserDto(
+                user.getId(),
                 user.getName(),
                 user.getPassword());
     }
 
     public List<UserDto> mapToUserDtoList(final List<User> users) {
         return users.stream()
-                .map(user -> new UserDto(user.getName(), user.getPassword()))
+                .map(user -> new UserDto(user.getId(), user.getName(), user.getPassword()))
                 .collect(Collectors.toList());
     }
 }

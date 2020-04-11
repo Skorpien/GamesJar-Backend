@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 public class GameMapper {
     public Game mapToGame(final GameDto gameDto) {
         return new Game(
+                gameDto.getId(),
                 gameDto.getName(),
                 gameDto.getTime(),
                 gameDto.getCategories()
@@ -19,6 +20,7 @@ public class GameMapper {
 
     public GameDto mapToGameDto(final Game game) {
         return new GameDto(
+                game.getId(),
                 game.getName(),
                 game.getTime(),
                 game.getCategories()
@@ -27,7 +29,7 @@ public class GameMapper {
 
     public List<GameDto> mapToGameDtoList(final List<Game> games) {
         return games.stream()
-                .map(game -> new GameDto(game.getName(), game.getTime(), game.getCategories()))
+                .map(game -> new GameDto(game.getId(), game.getName(), game.getTime(), game.getCategories()))
                 .collect(Collectors.toList());
     }
 }

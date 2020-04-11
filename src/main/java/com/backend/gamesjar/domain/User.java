@@ -30,12 +30,13 @@ public class User {
     @ManyToMany
     @JoinTable(
             name = "join_user_room",
-            joinColumns = {@JoinColumn(name = "users_id", referencedColumnName = "ID")},
-            inverseJoinColumns = {@JoinColumn(name = "room_id", referencedColumnName = "ID")}
+            joinColumns = {@JoinColumn},
+            inverseJoinColumns = {@JoinColumn}
     )
     private List<Room> rooms = new ArrayList<>();
 
-    public User(String name, String password) {
+    public User(Long id, String name, String password) {
+        this.id = id;
         this.name = name;
         this.password = password;
     }

@@ -29,16 +29,16 @@ public class Game {
     private PlayingTime time;
 
     @Enumerated(EnumType.STRING)
-    @ElementCollection(fetch = FetchType.EAGER)
     @Column(name = "categories")
-    private Set<Category> categories = new HashSet<>();
+    private Category categories;
 
     @ManyToOne
-    @JoinColumn(name = "room_id")
+    @JoinColumn(name = "room_ID")
     private Room room;
 
 
-    public Game(String name, PlayingTime time, Set<Category> categories) {
+    public Game(Long id, String name, PlayingTime time, Category categories) {
+        this.id = id;
         this.name = name;
         this.time = time;
         this.categories = categories;
