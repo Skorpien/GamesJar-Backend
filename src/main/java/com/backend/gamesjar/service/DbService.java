@@ -51,6 +51,10 @@ public class DbService {
         return gameRepository.save(game);
     }
 
+    public Game updateGame(final Game game) {
+        return gameRepository.save(game);
+    }
+
     public void deleteGame(final Long id) {
         gameRepository.deleteById(id);
     }

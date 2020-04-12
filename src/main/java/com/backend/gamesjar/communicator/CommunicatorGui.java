@@ -7,8 +7,8 @@ public class CommunicatorGui {
     @Autowired
     private DialogService dialogService;
 
-    public void sentMessage(String userName, String message) {
-            dialogService.sentMessage("localhost", "8082", userName + ": " + message);
+    public void sentMessage(Long id, String userName, String message) {
+            dialogService.sentMessage(id,userName + ": " + message);
     }
 
 }

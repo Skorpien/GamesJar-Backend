@@ -1,6 +1,6 @@
 package com.backend.gamesjar.domain;
 
-import lombok.AllArgsConstructor;
+import com.backend.gamesjar.communicator.domain.History;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -31,8 +31,16 @@ public class Room {
     )
     private List<Game> games = new ArrayList<>();
 
+
     public Room(Long id, String name) {
         this.id = id;
         this.name = name;
     }
+
+    @OneToOne(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER
+    )
+    @JoinColumn(name = "History_id")
+    private History history;
 }

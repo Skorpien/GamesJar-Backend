@@ -43,6 +43,6 @@ public class GameController {
 
     @RequestMapping(method = RequestMethod.PUT, value = "/games")
     public GameDto updateGame(@RequestBody GameDto gameDto) {
-        return gameMapper.mapToGameDto(dbService.saveGame(gameMapper.mapToGame(gameDto)));
+        return gameMapper.mapToGameDto(dbService.updateGame(gameMapper.mapToGame(gameDto)));
     }
 }

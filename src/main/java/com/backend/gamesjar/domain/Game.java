@@ -20,7 +20,7 @@ public class Game {
     @Column(name = "ID")
     private Long id;
 
-    @Column(name = "username")
+    @Column(name = "gamename")
     @NotNull
     private String name;
 
