@@ -2,8 +2,7 @@ package com.backend.gamesjar.controller;
 
 import com.backend.gamesjar.domain.GameDto;
 import com.backend.gamesjar.domain.GameNotFoundException;
-import com.backend.gamesjar.mapper.GameMapper;
-import com.backend.gamesjar.service.DbService;
+import com.backend.gamesjar.facade.GameControllerFacade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,33 +15,30 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RequestMapping("/v1/gamesjar")
 public class GameController {
     @Autowired
-    private DbService dbService;
-
-    @Autowired
-    private GameMapper gameMapper;
+    private GameControllerFacade facade;
 
     @RequestMapping(method = RequestMethod.GET, value = "/games")
     public List<GameDto> gamesList() {
-        return gameMapper.mapToGameDtoList(dbService.getAllGames());
+        return facade.gamesList();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/games/{gameId}")
     public GameDto getGame(@PathVariable Long gameId) throws GameNotFoundException {
-        return gameMapper.mapToGameDto(dbService.getGame(gameId).orElseThrow(GameNotFoundException::new));
+        return facade.getGame(gameId);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/games/{gameId}")
     public void deleteGame(@PathVariable Long gameId) {
-        dbService.deleteGame(gameId);
+        facade.deleteGame(gameId);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/games", consumes = APPLICATION_JSON_VALUE)
     public void createGame(@RequestBody GameDto gameDto) {
-        dbService.saveGame(gameMapper.mapToGame(gameDto));
+        facade.createGame(gameDto);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/games")
     public GameDto updateGame(@RequestBody GameDto gameDto) {
-        return gameMapper.mapToGameDto(dbService.updateGame(gameMapper.mapToGame(gameDto)));
+        return facade.updateGame(gameDto);
     }
 }

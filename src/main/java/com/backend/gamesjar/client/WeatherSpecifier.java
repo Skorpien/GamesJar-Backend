@@ -1,13 +1,12 @@
 package com.backend.gamesjar.client;
 
-import com.backend.gamesjar.domain.WeatherDto;
+import com.backend.gamesjar.domain.Weather;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.HashMap;
@@ -15,7 +14,7 @@ import java.util.Map;
 
 public class WeatherSpecifier {
 
-    public WeatherDto specificResult(WeatherDto weatherDto, String strUrl) {
+    public Weather specificResult(Weather weather, String strUrl) {
         try {
             StringBuilder result = new StringBuilder();
             URL url = new URL(strUrl);
@@ -31,13 +30,13 @@ public class WeatherSpecifier {
             Map<String, Object> mainMap = jsonToMap(respMap.get("main").toString());
             //Map<String, Object> windMap = jsonToMap(respMap.get("wind").toString());
 
-            weatherDto.setTemp(mainMap.get("temp").toString());
-            weatherDto.setHumidity(mainMap.get("humidity").toString());
+            weather.setTemp(mainMap.get("temp").toString());
+            weather.setHumidity(mainMap.get("humidity").toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return weatherDto;
+        return weather;
     }
 
 

@@ -1,5 +1,7 @@
 package com.backend.gamesjar.domain;
 
+import com.backend.gamesjar.communicator.domain.History;
+import com.backend.gamesjar.observer.Observer;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @Entity(name = "users")
-public class User {
+public class User implements Observer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
@@ -35,9 +37,18 @@ public class User {
     )
     private List<Room> rooms = new ArrayList<>();
 
+    @Transient
+    private String message;
+
     public User(Long id, String name, String password) {
         this.id = id;
         this.name = name;
         this.password = password;
+    }
+
+    @Override
+    public String update(History history) {
+        message = "There is new message in " + history.getRoom().getName() + " room";
+        return message;
     }
 }

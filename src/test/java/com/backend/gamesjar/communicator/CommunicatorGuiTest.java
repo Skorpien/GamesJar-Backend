@@ -32,7 +32,7 @@ public class CommunicatorGuiTest {
     @Test
     public void sentMessage() throws Exception {
         History history = new History(1L, "");
-//        Mockito.when(communicatorRepository.findById(1L)).thenReturn(java.util.Optional.of(history));
+        Mockito.when(communicatorRepository.findById(1L)).thenReturn(java.util.Optional.of(history));
 
         communicatorGui.sentMessage(1L,"bob", "message");
         System.out.println(historyService.getHistory(1L));

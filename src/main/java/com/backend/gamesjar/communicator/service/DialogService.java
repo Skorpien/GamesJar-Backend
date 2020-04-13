@@ -20,8 +20,5 @@ public class DialogService {
                 HttpMethod.PUT,
                 HttpEntity.EMPTY,
                 String.class);
-
-        History history = new History(historyId, infoToSent);
-        communicatorRepository.save(history);
     }
 }
