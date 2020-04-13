@@ -1,36 +1,59 @@
+/*
 package com.backend.gamesjar.client;
 
-import com.backend.gamesjar.domain.WeatherDto;
+import com.backend.gamesjar.config.WeatherConfig;
+import com.backend.gamesjar.domain.Weather;
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.runner.RunWith;;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import static org.junit.Assert.*;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class WeatherClientTest {
 
+    @Mock
+    private WeatherClient weatherClient;
 
     @Mock
-    WeatherClient weatherClient;
+    private WeatherConfig weatherConfig;
 
-    @Test
-    public void getInstance() {
+    @Mock
+    private WeatherSpecifier weatherSpecifier;
+
+    @Before
+    public void init() {
+        when(weatherConfig.getWeatherEndpoint()).thenReturn("http://test.com");
+        when(weatherConfig.getWeatherCity()).thenReturn("city");
+        when(weatherConfig.getWeatherKey()).thenReturn("xxx");
     }
 
     @Test
-    public void getWeather() {
+    public void testGetWeather() {
+        //Given
+        Weather weather = new Weather();
+        weather.setTemp("20.0");
+        weather.setHumidity("30.0");
+
 
         //When
-        WeatherDto weatherDto;
+        when(weatherSpecifier.specificResult(weather, "http://test.com/q=city&appid=xxx&units=metric")).thenReturn(weather);
 
-        weatherClient.getWeather();
+        Weather testWeather = weatherClient.getWeather();
 
         //Then
-       // weatherDto = weatherClient.getWeather();
-
-       // System.out.println(weatherDto.getTemp());
+//        Assert.assertEquals("20.0", testWeather.getTemp());
+ //       Assert.assertEquals("30.0", testWeather.getHumidity());
     }
-}
+
+
+
+    @Test
+    public void getMyWeather() {
+
+        //Given
+        WeatherClient weatherClient = new WeatherClient();
+    }
+}*/

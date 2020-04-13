@@ -18,18 +18,21 @@ public class WeatherClient {
     @Autowired
     private WeatherConfig weatherConfig;
 
+    @Autowired
+    private WeatherSpecifier weatherSpecifier;
+
+    private Weather myWeather;
+
 
     public Weather getWeather() {
         URI url = UriComponentsBuilder.fromHttpUrl(weatherConfig.getWeatherEndpoint())
                 .queryParam("q", weatherConfig.getWeatherCity())
                 .queryParam("appid", weatherConfig.getWeatherKey())
                 .queryParam("units", "metric").build().encode().toUri();
-        WeatherSpecifier weatherSpecifier = new WeatherSpecifier();
-        Weather weather = new Weather();
-        weather = weatherSpecifier.specificResult(weather, url.toString());
+        myWeather = weatherSpecifier.specificResult(myWeather, url.toString());
 
-        if(weather != null) {
-            return weather;
+        if(myWeather != null) {
+            return myWeather;
         }
         return new Weather();
     }

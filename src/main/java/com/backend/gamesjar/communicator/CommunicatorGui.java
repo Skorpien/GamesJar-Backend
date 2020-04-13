@@ -7,7 +7,7 @@ public class CommunicatorGui {
     @Autowired
     private DialogService dialogService;
 
-    public void sentMessage(Long id, String userName, String message) {
+    public void sentMessage(Long id, String userName, String message) throws Exception {
             dialogService.sentMessage(id,userName + ": " + message);
     }
 

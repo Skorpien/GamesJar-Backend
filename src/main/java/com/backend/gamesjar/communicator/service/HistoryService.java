@@ -1,6 +1,6 @@
 package com.backend.gamesjar.communicator.service;
 
-import com.backend.gamesjar.communicator.CommunicatorRepository;
+import com.backend.gamesjar.communicator.repository.CommunicatorRepository;
 import com.backend.gamesjar.communicator.domain.History;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

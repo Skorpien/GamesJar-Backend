@@ -1,6 +1,6 @@
 package com.backend.gamesjar.communicator.service;
 
-import com.backend.gamesjar.communicator.CommunicatorRepository;
+import com.backend.gamesjar.communicator.repository.CommunicatorRepository;
 import com.backend.gamesjar.communicator.domain.History;
 import org.junit.Assert;
 import org.junit.Test;
@@ -8,14 +8,11 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.Assert.*;
+import java.util.Optional;
 
 @RunWith(MockitoJUnitRunner.class)
 public class HistoryServiceTest {
@@ -29,13 +26,14 @@ public class HistoryServiceTest {
     public void getHistory() {
 
         //Given
-        History history = new History(1L, "history");
+        Optional<History> history = Optional.of(new History(1L, "history"));
 
         //When
-        String historyCheck = history.getHistory();
+        Mockito.when(communicatorRepository.findById(1L)).thenReturn(history);
+        Optional<History> historyCheck = historyService.getHistory(1L);
 
         //Then
-        Assert.assertEquals("history", historyCheck);
+        Assert.assertEquals(history, historyCheck);
 
     }
 

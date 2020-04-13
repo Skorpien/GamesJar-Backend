@@ -3,6 +3,7 @@ package com.backend.gamesjar.client;
 import com.backend.gamesjar.domain.Weather;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,6 +13,7 @@ import java.net.URLConnection;
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
 public class WeatherSpecifier {
 
     public Weather specificResult(Weather weather, String strUrl) {

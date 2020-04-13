@@ -1,7 +1,5 @@
 package com.backend.gamesjar.mapper;
 
-import com.backend.gamesjar.domain.Game;
-import com.backend.gamesjar.domain.GameDto;
 import com.backend.gamesjar.domain.Room;
 import com.backend.gamesjar.domain.RoomDto;
 import org.springframework.stereotype.Component;

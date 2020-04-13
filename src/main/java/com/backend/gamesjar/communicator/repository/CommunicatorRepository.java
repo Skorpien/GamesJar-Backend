@@ -1,4 +1,4 @@
-package com.backend.gamesjar.communicator;
+package com.backend.gamesjar.communicator.repository;
 
 import com.backend.gamesjar.communicator.domain.History;
 import org.springframework.data.repository.CrudRepository;
