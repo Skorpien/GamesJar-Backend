@@ -27,7 +27,7 @@ public class ConnectionController {
 
     @RequestMapping(value = "/history/{historyId}", method = RequestMethod.GET)
     public HistoryDto getHistory(@PathVariable Long historyId) throws Exception {
-        return historyMapper.mapToHistoryDto(historyService.getHistory(historyId).orElseThrow(Exception::new));
+        return historyMapper.mapToHistoryDto(historyService.getHistory(historyId));
     }
 
     @RequestMapping(value = "/history", method = RequestMethod.GET)

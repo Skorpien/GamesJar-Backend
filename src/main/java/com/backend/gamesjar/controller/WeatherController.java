@@ -1,6 +1,7 @@
 package com.backend.gamesjar.controller;
 
 import com.backend.gamesjar.client.WeatherClient;
+import com.backend.gamesjar.domain.Weather;
 import com.backend.gamesjar.domain.WeatherDto;
 import com.backend.gamesjar.facade.WeatherControllerFacade;
 import com.backend.gamesjar.mapper.WeatherMapper;

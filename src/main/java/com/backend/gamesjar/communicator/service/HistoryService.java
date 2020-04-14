@@ -14,14 +14,14 @@ public class HistoryService {
     @Autowired
     private CommunicatorRepository communicatorRepository;
 
-    public Optional<History> getHistory(final Long historyId) {
-        return communicatorRepository.findById(historyId);
+    public History getHistory(final Long historyId) throws Exception {
+        return communicatorRepository.findById(historyId).orElseThrow(Exception::new);
     }
 
     public History addHistory(String text, final Long historyId) throws Exception {
-        Optional<History> message = communicatorRepository.findById(historyId);
-        message.get().setHistory(message.get().getHistory() + text + System.lineSeparator());
-        return communicatorRepository.save(message.orElseThrow(Exception::new));
+        History message = communicatorRepository.findById(historyId).orElseThrow(Exception::new);
+        message.setHistory(message.getHistory() + text + System.lineSeparator());
+        return communicatorRepository.save(message);
     }
 
     public History createHistory(final History history) {

@@ -1,5 +1,6 @@
 package com.backend.gamesjar.facade;
 
+import com.backend.gamesjar.domain.Game;
 import com.backend.gamesjar.domain.GameDto;
 import com.backend.gamesjar.domain.GameNotFoundException;
 import com.backend.gamesjar.mapper.GameMapper;
@@ -23,16 +24,15 @@ public class GameControllerFacade {
     }
 
     public GameDto getGame(Long gameId) throws GameNotFoundException {
-        return gameMapper.mapToGameDto(dbService.getGame(gameId).orElseThrow(GameNotFoundException::new));
+        return gameMapper.mapToGameDto(dbService.getGame(gameId));
     }
-
 
     public void deleteGame(Long gameId) {
         dbService.deleteGame(gameId);
     }
 
-    public void createGame(GameDto gameDto) {
-        dbService.saveGame(gameMapper.mapToGame(gameDto));
+    public Game createGame(GameDto gameDto) {
+        return dbService.saveGame(gameMapper.mapToGame(gameDto));
     }
 
     public GameDto updateGame(GameDto gameDto) {

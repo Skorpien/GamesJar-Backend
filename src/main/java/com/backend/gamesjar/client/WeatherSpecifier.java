@@ -1,6 +1,6 @@
 package com.backend.gamesjar.client;
 
-import com.backend.gamesjar.domain.Weather;
+import com.backend.gamesjar.domain.WeatherDto;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.springframework.stereotype.Component;
@@ -16,7 +16,7 @@ import java.util.Map;
 @Component
 public class WeatherSpecifier {
 
-    public Weather specificResult(Weather weather, String strUrl) {
+    public WeatherDto specificResult(WeatherDto weather, String strUrl) {
         try {
             StringBuilder result = new StringBuilder();
             URL url = new URL(strUrl);

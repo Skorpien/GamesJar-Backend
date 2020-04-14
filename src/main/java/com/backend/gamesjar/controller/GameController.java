@@ -1,5 +1,6 @@
 package com.backend.gamesjar.controller;
 
+import com.backend.gamesjar.domain.Game;
 import com.backend.gamesjar.domain.GameDto;
 import com.backend.gamesjar.domain.GameNotFoundException;
 import com.backend.gamesjar.facade.GameControllerFacade;
@@ -33,8 +34,8 @@ public class GameController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/games", consumes = APPLICATION_JSON_VALUE)
-    public void createGame(@RequestBody GameDto gameDto) {
-        facade.createGame(gameDto);
+    public Game createGame(@RequestBody GameDto gameDto) {
+        return facade.createGame(gameDto);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/games")

@@ -1,5 +1,6 @@
 package com.backend.gamesjar.controller;
 
+import com.backend.gamesjar.domain.Room;
 import com.backend.gamesjar.domain.RoomDto;
 import com.backend.gamesjar.domain.RoomNotFoundException;
 import com.backend.gamesjar.facade.RoomControllerFacade;
@@ -33,8 +34,8 @@ public class RoomController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/rooms", consumes = APPLICATION_JSON_VALUE)
-    public void createRoom(@RequestBody RoomDto roomDto) {
-        facade.createRoom(roomDto);
+    public Room createRoom(@RequestBody RoomDto roomDto) {
+        return facade.createRoom(roomDto);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/rooms")

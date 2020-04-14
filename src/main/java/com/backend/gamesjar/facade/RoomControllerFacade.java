@@ -1,5 +1,6 @@
 package com.backend.gamesjar.facade;
 
+import com.backend.gamesjar.domain.Room;
 import com.backend.gamesjar.domain.RoomDto;
 import com.backend.gamesjar.domain.RoomNotFoundException;
 import com.backend.gamesjar.mapper.RoomMapper;
@@ -24,15 +25,15 @@ public class RoomControllerFacade {
     }
 
     public RoomDto getRoom(Long roomId) throws RoomNotFoundException {
-        return roomMapper.mapToRoomDto(dbService.getRoom(roomId).orElseThrow(RoomNotFoundException::new));
+        return roomMapper.mapToRoomDto(dbService.getRoom(roomId));
     }
 
     public void deleteRoom(Long roomId) {
         dbService.deleteRoom(roomId);
     }
 
-    public void createRoom(RoomDto roomDto) {
-        dbService.saveRoom(roomMapper.mapToRoom(roomDto));
+    public Room createRoom(RoomDto roomDto) {
+        return dbService.saveRoom(roomMapper.mapToRoom(roomDto));
     }
 
     public RoomDto updateRoom(RoomDto roomDto) {

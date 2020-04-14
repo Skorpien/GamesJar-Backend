@@ -1,5 +1,6 @@
 package com.backend.gamesjar.facade;
 
+import com.backend.gamesjar.domain.User;
 import com.backend.gamesjar.domain.UserDto;
 import com.backend.gamesjar.domain.UserNotFoundException;
 import com.backend.gamesjar.mapper.UserMapper;
@@ -23,15 +24,15 @@ public class UserControllerFacade {
     }
 
     public UserDto getUser(Long userId) throws UserNotFoundException {
-        return userMapper.mapToUserDto(dbService.getUser(userId).orElseThrow(UserNotFoundException::new));
+        return userMapper.mapToUserDto(dbService.getUser(userId));
     }
 
     public void deleteUser(Long userId) {
         dbService.deleteUser(userId);
     }
 
-    public void createUser (UserDto userDto) {
-        dbService.saveUser(userMapper.mapToUser(userDto));
+    public User createUser (UserDto userDto) {
+        return dbService.saveUser(userMapper.mapToUser(userDto));
     }
 
     public UserDto updateUser (UserDto userDto) {

@@ -1,5 +1,6 @@
 package com.backend.gamesjar.controller;
 
+import com.backend.gamesjar.domain.User;
 import com.backend.gamesjar.domain.UserDto;
 import com.backend.gamesjar.domain.UserNotFoundException;
 import com.backend.gamesjar.facade.UserControllerFacade;
@@ -34,8 +35,8 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/users", consumes = APPLICATION_JSON_VALUE)
-    public void createUser (@RequestBody UserDto userDto) {
-        facade.createUser(userDto);
+    public User createUser (@RequestBody UserDto userDto) {
+        return facade.createUser(userDto);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/users")

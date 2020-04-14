@@ -21,10 +21,10 @@ public class WeatherClient {
     @Autowired
     private WeatherSpecifier weatherSpecifier;
 
-    private Weather myWeather;
+    private WeatherDto myWeather;
 
 
-    public Weather getWeather() {
+    public WeatherDto getWeather() {
         URI url = UriComponentsBuilder.fromHttpUrl(weatherConfig.getWeatherEndpoint())
                 .queryParam("q", weatherConfig.getWeatherCity())
                 .queryParam("appid", weatherConfig.getWeatherKey())
@@ -34,6 +34,6 @@ public class WeatherClient {
         if(myWeather != null) {
             return myWeather;
         }
-        return new Weather();
+        return new WeatherDto();
     }
 }

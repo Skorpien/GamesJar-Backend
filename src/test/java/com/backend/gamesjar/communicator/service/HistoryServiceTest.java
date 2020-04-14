@@ -18,19 +18,19 @@ import java.util.Optional;
 public class HistoryServiceTest {
 
     @InjectMocks
-    HistoryService historyService;
+    private HistoryService historyService;
     @Mock
-    CommunicatorRepository communicatorRepository;
+    private CommunicatorRepository communicatorRepository;
 
     @Test
-    public void getHistory() {
+    public void getHistory() throws Exception {
 
         //Given
-        Optional<History> history = Optional.of(new History(1L, "history"));
+        History history = new History(1L, "history");
 
         //When
-        Mockito.when(communicatorRepository.findById(1L)).thenReturn(history);
-        Optional<History> historyCheck = historyService.getHistory(1L);
+        Mockito.when(communicatorRepository.findById(1L)).thenReturn(Optional.of(history));
+        History historyCheck = historyService.getHistory(1L);
 
         //Then
         Assert.assertEquals(history, historyCheck);

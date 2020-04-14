@@ -1,8 +1,6 @@
 package com.backend.gamesjar.service;
 
-import com.backend.gamesjar.domain.Game;
-import com.backend.gamesjar.domain.Room;
-import com.backend.gamesjar.domain.User;
+import com.backend.gamesjar.domain.*;
 import com.backend.gamesjar.repository.GameRepository;
 import com.backend.gamesjar.repository.RoomRepository;
 import com.backend.gamesjar.repository.UserRepository;
@@ -27,8 +25,8 @@ public class DbService {
         return userRepository.findAll();
     }
 
-    public Optional<User> getUser(final Long id) {
-        return userRepository.findById(id);
+    public User getUser(final Long id) throws UserNotFoundException {
+        return userRepository.findById(id).orElseThrow(UserNotFoundException::new);
     }
 
     public User saveUser(final User user) {
@@ -43,8 +41,8 @@ public class DbService {
         return gameRepository.findAll();
     }
 
-    public Optional<Game> getGame(final Long id) {
-        return gameRepository.findById(id);
+    public Game getGame(final Long id) throws GameNotFoundException {
+        return gameRepository.findById(id).orElseThrow(GameNotFoundException::new);
     }
 
     public Game saveGame(final Game game) {
@@ -63,8 +61,8 @@ public class DbService {
         return roomRepository.findAll();
     }
 
-    public Optional<Room> getRoom(final Long id) {
-        return roomRepository.findById(id);
+    public Room getRoom(final Long id) throws RoomNotFoundException {
+        return roomRepository.findById(id).orElseThrow(RoomNotFoundException::new);
     }
 
     public Room saveRoom(final Room room) {
