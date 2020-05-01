@@ -1,8 +1,0 @@
-{
-  "properties": [
-    {
-      "name": "weather.api.endpoint.prod",
-      "type": "java.lang.String",
-      "description": "Description for weather.api.endpoint.prod."
-  }
-] }

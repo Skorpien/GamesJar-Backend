@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.backend.gamesjar.mapper.WeatherMapperTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-05-01T11:19:05" hostname="KOCOPOU" time="0.003">
-  <properties/>
-  <testcase name="mapToWeatherDto" classname="com.backend.gamesjar.mapper.WeatherMapperTest" time="0.001"/>
-  <testcase name="mapToWeather" classname="com.backend.gamesjar.mapper.WeatherMapperTest" time="0.001"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
