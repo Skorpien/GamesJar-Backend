@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.backend.gamesjar.service.DbServiceTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2020-05-01T11:19:05" hostname="KOCOPOU" time="0.139">
+  <properties/>
+  <testcase name="saveGame" classname="com.backend.gamesjar.service.DbServiceTest" time="0.108"/>
+  <testcase name="saveRoom" classname="com.backend.gamesjar.service.DbServiceTest" time="0.003"/>
+  <testcase name="saveUser" classname="com.backend.gamesjar.service.DbServiceTest" time="0.002"/>
+  <testcase name="getAllGames" classname="com.backend.gamesjar.service.DbServiceTest" time="0.001"/>
+  <testcase name="getAllRooms" classname="com.backend.gamesjar.service.DbServiceTest" time="0.002"/>
+  <testcase name="getAllUsers" classname="com.backend.gamesjar.service.DbServiceTest" time="0.001"/>
+  <testcase name="getGame" classname="com.backend.gamesjar.service.DbServiceTest" time="0.002"/>
+  <testcase name="getRoom" classname="com.backend.gamesjar.service.DbServiceTest" time="0.002"/>
+  <testcase name="getUser" classname="com.backend.gamesjar.service.DbServiceTest" time="0.002"/>
+  <testcase name="deleteGame" classname="com.backend.gamesjar.service.DbServiceTest" time="0.009"/>
+  <testcase name="deleteRoom" classname="com.backend.gamesjar.service.DbServiceTest" time="0.003"/>
+  <testcase name="deleteUser" classname="com.backend.gamesjar.service.DbServiceTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
